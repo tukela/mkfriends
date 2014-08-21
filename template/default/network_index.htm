@@ -1,0 +1,96 @@
+<!--{eval $_TPL['titles'] = array();}-->
+<!--{template header}-->
+
+<div id="content">
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-6973433300922161";
+/* 468x60, 创建于 10-3-25 */
+google_ad_slot = "6368103048";
+google_ad_width = 468;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+	
+	
+	<div class="m_box">
+	
+
+			
+			
+	<!--{if $barlist}-->
+		<h3 class="feed_header">
+			<div class="r_option"></div>
+			推荐同城有头像异性会员 
+		</h3>
+		<ul class="avatar_list">
+			<!--{loop $barlist $key $value}-->
+			<li>
+				<div class="avatar48"><a href="space.php?uid=$value[uid]"><img src="<!--{avatar($value[uid],small)}-->" alt="{$_SN[$value[uid]]}" /></a></div>
+				<p><a href="space.php?uid=$value[uid]" title="{$_SN[$value[uid]]}">{$_SN[$value[uid]]}</a></p>
+			</li>
+			<!--{/loop}-->
+		</ul>
+	<!--{/if}-->
+	
+	</div>		
+			
+
+	<div class="m_box">
+		<h3 class="feed_header">
+			<div class="r_option"></div>
+			同城在线异性有头像会员
+		</h3>
+		<ul class="avatar_list">
+		<!--{loop $onlinelist $key $value}-->
+			<li>
+				<div class="avatar48"><a href="space.php?uid=$value[uid]" title="{$_SN[$value[uid]]}"><img src="<!--{avatar($value[uid],small)}-->" /></a></div>
+				<p><a href="space.php?uid=$value[uid]">{$_SN[$value[uid]]}</a></p>
+				<p class="time">当前在线</p>
+			</li>
+		<!--{/loop}-->
+		</ul>
+	</div>
+
+</div>
+
+<div id="sidebar">
+	<!--{if $task}-->
+	<div class="ye_r_t"><div class="ye_l_t"><div class="ye_r_b"><div class="ye_l_b">
+		<div class="task_notice2">
+			<h3>$task[name]</h3>
+			<div class="task_content">
+				<img class="icon" alt="" src="image/task/gold.gif"/>
+				<p>$task[note] ...</p>
+				<p style="text-align: center;padding: 20px 0 0;"><a href="cp.php?ac=task&taskid=$task[taskid]"><img alt="" src="image/getred.gif"/></a></p>
+			</div>
+			<div class="integral">
+				<a href="cp.php?ac=credit" class="r_option">获取更多积分</a>
+				目前您的积分数 <span class="num">$space[credit]</span>
+			</div>
+		</div>
+	</div></div></div></div>
+	<!--{/if}-->
+   <div class="sidebox">
+     <h2 class="title">男人要赚钱</h2>
+   </div>	
+<script type="text/javascript"><!--
+google_ad_client = "ca-pub-6973433300922161";
+/* 300x250, 创建于 10-3-7 */
+google_ad_slot = "2867410462";
+google_ad_width = 300;
+google_ad_height = 250;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script>
+	
+	
+</div>
+
+
+
+<!--{template footer}-->

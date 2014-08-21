@@ -1,0 +1,40 @@
+<style type="text/css"> 
+.sotdbj{ display:none;}
+.r_option{display:none;}
+.tabs_header{width:794px;}
+.c_form{padding:6px 0 0 0;margin:0;}
+.userlist{margin-left:35px;}
+.STYLE13 {color: #333333}
+</style>
+ 
+	<div class="tabs_header" style="margin-top:-5px;">
+	<a class="r_option">&raquo; 当前显示的内容为：
+	<!--{if $_GET['p'] == 'girl'}-->迷人女士
+	<!--{elseif $_GET['p'] == 'man'}-->大方绅士
+	<!--{else}-->
+		<!--{if $_GET['sex'] == 1}-->男性会员
+		<!--{elseif $_GET['sex'] == 2}-->女性会员
+		<!--{else}-->搜索结果<!--{/if}-->
+	<!--{/if}-->&nbsp;&nbsp;
+	<!--{if $_GET['resideprovince1']}-->$_GET['resideprovince1']<!--{/if}-->&nbsp;
+	<!--{if $_GET['residecity1']}-->$_GET['residecity1']<!--{/if}-->
+	</a>
+	</div>
+ 
+	<div class="space_list">
+	<!--{if $list}-->
+	<ul class="userlist">
+	<!--{loop $list $key $value}-->
+	<li><div class="user_div1"><div class="user_div2"><p><a href="space.php?uid=$value[uid]" title="{$_SN[$value[uid]]}" target="_blank"><!--{avatar($value[uid],middle,false,$value[sex])}--></a></p><a href="space.php?uid=$value[uid]" title="{$_SN[$value[uid]]}" target="_blank"><div class="user_div3" title="{$_SN[$value[uid]]}" ></div></a></div></div><div class="user_div4"><div class="user_div5" ><a href="space.php?uid=$value[uid]" target="_blank">$value[username]</a><!--{if $value[vip]==1}--><img src="/image/pay/vip.gif" border="0" /><!--{/if}--><em style="width:0px"></em></div><div class="user_div6"><!--{if $value[sex]==2}-->美女<!--{elseif $value[sex]==1}-->帅哥<!--{/if}--> {$value[birth]}</div><div class="user_div7">{$value['resideprovince']} {$value['residecity']}</div>
+	<div class="user_div8"><!--{if $value[jymd]==0}-->
+	  <span class="STYLE13">$space[field_9]</span><!--{/if}--></div>
+	<div class="user_div9" ><a href="space.php?uid=$value[uid]" target="_blank" title="{$_SN[$value[uid]]}" >查看详细资料</a></div></div></li>
+	<!--{/loop}-->
+	</ul>
+	<div class="page">$multi</div>
+	<!--{else}-->
+	<div class="c_form">没有相关成员。</div>
+	<!--{/if}-->
+	</div>
+ 
+

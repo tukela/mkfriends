@@ -1,0 +1,146 @@
+<html>
+<head>
+<META http-equiv="Content-Type" content="text/html; charset=GB2312">
+<title>:: ExoBUD MP(II) v4.1tc:: 源码超市</title>
+<meta name="Author" content="ExoBUD, Jinwoong Yu">
+<meta name="Keywords" content="源码超市">
+<meta name="Description" content="asf,asx,wma,wmx,wmv,wvx,mp3,wav,mid">
+<link rel="stylesheet" type="text/css" href="exobud.css">
+
+<script language="JavaScript" src="exobud.js"></script>
+<script language="JavaScript" src="exobudset.js"></script>
+<script language="JavaScript" src="menu.js"></script>
+<script language="JScript" for="Exobud" event="openStateChange(sf)">evtOSChg(sf);</script>
+<script language="JScript" for="Exobud" event="playStateChange(ns)">evtPSChg(ns);</script>
+<script language="JScript" for="Exobud" event="error()">evtWmpError();</script>
+<script language="JScript" for="Exobud" event="Buffering(bf)">evtWmpBuff(bf);</script>
+<script language="JavaScript" src="imgchg.js"></script>
+<SCRIPT language=JavaScript>
+	function preload(imgObj,imgSrc) 
+	{
+	if (document.images) 
+	{
+		eval(imgObj+' = new Image()')
+		eval(imgObj+'.src = "'+imgSrc+'"')
+	}
+	}
+	preload("meter0", "./img/player.volmeter.0.gif");
+	preload("meter1", "./img/player.volmeter.1.gif");
+	preload("meter2", "./img/player.volmeter.2.gif");
+	preload("meter3", "./img/player.volmeter.3.gif");
+	preload("meter4", "./img/player.volmeter.4.gif");
+	preload("meter5", "./img/player.volmeter.5.gif");
+	preload("meter6", "./img/player.volmeter.6.gif");
+	preload("meter7", "./img/player.volmeter.7.gif");
+	preload("meter8", "./img/player.volmeter.8.gif");
+	preload("meter9", "./img/player.volmeter.9.gif");
+	preload("meter10", "./img/player.volmeter.10.gif");
+</SCRIPT>
+</head>
+
+<body onLoad="initExobud();" onDragStart="return false" onSelectStart="return false"
+  topmargin=0 leftmargin=0 marginwidth=0 marginheight=0 bgcolor="#AAAAAA">
+
+<object id="Exobud" classid="CLSID:6BF52A52-394A-11d3-B153-00C04F79FAA6"
+  type="application/x-oleobject" width="0" height="0"
+  style="position:relative;left:0px;top:0px;width:0px;height:0px;">
+  <param name="autoStart" value="true">
+  <param name="balance" value="0">
+  <param name="currentPosition" value="0">
+  <param name="currentMarker" value="0">
+  <param name="enableContextMenu" value="false">
+  <param name="enableErrorDialogs" value="false">
+  <param name="enabled" value="true">
+  <param name="fullScreen" value="false">
+  <param name="invokeURLs" value="false">
+  <param name="mute" value="false">
+  <param name="playCount" value="1">
+  <param name="rate" value="1">
+  <param name="uiMode" value="none">
+  <param name="volume" value="100">
+</object>
+
+<table height=31 align=center cellpadding=0 cellspacing=0 border=0>
+  <tr>
+    <td>
+
+<table align=center cellpadding=0 cellspacing=0 border=0 height="26">
+  <tr>
+    <td align=center><a href="http://bbs.zt365.com/" target="_blank"><img border=0 src="./img/tb01.gif" onClick="window.close()" style="cursor:help" title="访问 [源码超市]"></a></td>
+        <td
+     ><img name="plist" src="./img/list.gif" border=0 onClick="openPlist()"
+        onMouseOver="imgtog('plist',2)" onMouseOut="imgtog('plist',3)" style="cursor:hand" title="打开播放清单"
+    ></td>
+    <td nowrap
+     ><img name="prevt" src="./img/prev.gif" border=0 onClick="playPrev()"
+        onMouseOver="imgtog('prevt',2)" onMouseOut="imgtog('prevt',3)" style="cursor:hand" title="前一首"
+     ><img name="pauzt" src="./img/paus_off.gif" border=0 onClick="wmpPP()"
+        onMouseOver="imgtog('pauzt',2)" onMouseOut="imgtog('pauzt',3)" style="cursor:hand" title="暂停/恢复"
+     ><img name="stopt" src="./img/stop.gif" border=0 onClick="wmpStop()"
+        onMouseOver="imgtog('stopt',2)" onMouseOut="imgtog('stopt',3)" style="cursor:hand" title="停止"
+     ><img name="playt" src="./img/play.gif" border=0 onClick="startExobud()"
+        onMouseOver="imgtog('playt',2)" onMouseOut="imgtog('playt',3)" style="cursor:hand" title="播放"
+     ><img name="nextt" src="./img/next.gif" border=0 onClick="playNext()"
+        onMouseOver="imgtog('nextt',2)" onMouseOut="imgtog('nextt',3)" style="cursor:hand" title="下一首"
+    ></td>
+
+<td width="10"><img src="./img/time_ltb.gif"></td>
+<td width="80" background="./img/s_bg.gif" onClick="chgTimeFmt()">
+      <span id="disp2" class="time" title="时间长度显示方式 (正常/倒数s)"
+        style="width:80;cursor:hand;padding-bottom:2px">00:00 | 00:00</span>     
+   </td>
+    <td width=12><img name="scope" src="./img/time_rtb1.gif"></td>
+    <td nowrap>
+<img src="./img/player.volmeter.10.gif" name="meter" border="0" usemap="#FPMap0" onMouseover="this.style.cursor='hand';" title="音量大小调节" width="76" height="26"><img name="vmute" src="./img/mute_off.gif" border=0 onClick="wmpMute()" onMouseOver="imgtog('vmute',2)" onMouseOut="imgtog('vmute',3)" style="cursor:hand" title="静音/恢复"></td>
+<td background="./img/r_bg.gif" width="10"></td>
+<td background="./img/s_tbl.gif" width="24"></td>
+<td width=230 background="./img/s_bg.gif">
+
+      <marquee behavior="scroll" width=230 height=12 scrollamount=2 scrolldelay=70>
+        <span id="disp1" class="title">ExoBUD MP(II) v4.1tc+ 源码超市</span>    
+      </marquee>
+
+    </td>
+    <td width=43 align=center background="./img/s_tbr.gif" nowrap>
+
+
+    <td nowrap
+     ><img name="pmode" src="./img/rndmode_off.gif" border=0 onClick="chgPMode()"
+        onMouseOver="imgtog('pmode',2)" onMouseOut="imgtog('pmode',3)" style="cursor:hand" title="播放顺序(S=循环 R=随机)"
+     ><img name="rept"  src="./img/rept_off.gif"  border=0 onClick="chkRept()"
+        onMouseOver="imgtog('rept',2)"  onMouseOut="imgtog('rept',3)"  style="cursor:hand" title="重复播放当前曲目"
+    ></td>
+
+    <td width=33 background="./img/tb02.gif"></td>
+  </tr>
+</table>
+
+    </td>
+  </tr>
+  <tr>
+    <td height=0>
+
+      <div id="capText" style="width:100%;height:60;color:white;background-color:#555555;padding-top:3px;padding-left:5px;display:none"
+        >ExoBUD MP(II)(SMI)</div>               
+
+    </td>
+  </tr>
+</table>
+<map name="FPMap0">
+    <area shape="rect" coords="0, 0, 6, 25" onclick="MeterClick(0);return false;">
+    <area shape="rect" coords="1, 0, 11, 25" onclick="MeterClick(1);return false;">
+    <area shape="rect" coords="9, 0, 17, 25" onclick="MeterClick(2);return false;">
+    <area shape="rect" coords="14, 0, 22, 25" onclick="MeterClick(3);return false;">
+    <area shape="rect" coords="20, 0, 25, 25" onclick="MeterClick(4);return false;">
+    <area shape="rect" coords="25, 0, 33, 25" onclick="MeterClick(5);return false;">
+    <area shape="rect" coords="34, 0, 43, 25" onclick="MeterClick(6);return false;">
+    <area shape="rect" coords="43, 0, 49, 25" onclick="MeterClick(7);return false;">
+    <area shape="rect" coords="50, 0, 58, 25" onclick="MeterClick(8);return false;">
+    <area shape="rect" coords="59, 0, 68, 25" onclick="MeterClick(9);return false;">
+    <area shape="rect" coords="68, 0, 74, 25" onclick="MeterClick(10);return false;">
+    </map>
+</body>
+</html>
+
+
+

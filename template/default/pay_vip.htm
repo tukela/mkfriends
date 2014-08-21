@@ -1,0 +1,72 @@
+<!--{template header}-->
+<table border="0" align="right">
+  <tr>
+    <td width="220" height="48" align="center">	
+	 <strong> <!--{if $vips[ztime] > 0}-->
+      <font color="#666666">VIP状态:$vips[day] 天</font>		
+		  <img src="image/pay/vip.gif" alt="VIP会员:$vips[day]天" border="0" align="absmiddle" />
+			<!--{else}-->
+      <font color="#666666">VIP状态:未激活</font>	<img src="image/pay/vip2.gif" alt="未激活" border="0" align="absmiddle" />
+			<!--{/if}--></strong><br />
+    用户:<strong> $space[username]</strong> 积分:<span style="color: #FF0000;font-weight: bold;">$space[credit]</span>   </font> </td>
+  </tr>
+</table>
+<br />
+		<table width="98%" border="0" align="center" class="formtable">
+		      <caption>
+      <h2>VIP 尊贵特权</h2>
+	  
+        <p>&nbsp;&nbsp&nbsp </p>
+        </caption>
+  <tr>
+    <td align="center">
+	<table width="100%" border="0" cellpadding="0" cellspacing="0">
+      <tr>
+        <td bgcolor="#CCCCCC"><table width="100%" border="0" cellpadding="1" cellspacing="1">
+		  <tr>
+          <!--{loop $arr $value}-->
+            <td height="25" align="center" bgcolor="#FFFFFF"><span class="spaf">$value</span></td>
+		  <!--{/loop}--> 
+          </tr>
+          <!--{loop $carr $value}-->
+		  <tr>
+            <td height="25" align="center" bgcolor="#FFFFFF"><span class="spaf">$value[grouptitle]</span></td>
+            <td align="center" bgcolor="#FFFFFF">$value[vip]</td>
+            <td align="center" bgcolor="#FFFFFF">$value[vus]</td>
+            <td align="center" bgcolor="#FFFFFF">
+          <!--{if $_SCONFIG[viplookinfo] == 1}-->
+		  $value[vus]
+          <!--{else}-->
+		  <span class="STYLE1">√</span>
+          <!--{/if}-->
+			</td>
+            <td align="center" bgcolor="#FFFFFF">$value[maxattachsize]</td>
+            <td align="center" bgcolor="#FFFFFF">$value[maxfriendnum]</td>
+            <td align="center" bgcolor="#FFFFFF">$value[searchinterval]</td>
+            <td align="center" bgcolor="#FFFFFF">$value[postinterval]</td>
+			
+          <!--{if $_SCONFIG[allowdomain] == 1}-->
+            <td align="center" bgcolor="#FFFFFF">$value[domainlength]</td>
+			
+          <!--{/if}-->
+          </tr>
+		  <!--{/loop}--> 
+        </table></td>
+      </tr>
+    </table>
+	 </td></tr>
+  <tr>
+    <td width="135" height="65" align="center" valign="middle"><a href="pay.php?pay=buyvip"></a></td>
+    </tr>
+  
+  <tr>
+    <td height="65" align="center" valign="middle"><a href="/pay.php?pay=buyvip"><img src="image/pay/btn.gif" width="137" height="35" border="0" /></a></td>
+    </tr>
+	
+      <tr>
+        <td height="1" colspan="5" bgcolor="#FF9900"></td>
+      </tr>
+	  
+</table>
+
+<!--{template footer}-->

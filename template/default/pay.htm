@@ -1,0 +1,109 @@
+<!--{template header}-->
+<!--广告开始-->
+<div class="gonggao"><a href="parkApp.php?ac=index"><img src="image/start2.jpg" alt="99圈 | 真人社交网络圈子" /></a></div>
+<!--广告结束-->
+<div class="c_header">
+	<h1>充值服务中心</h1>
+</div>
+<table width="762" border="0" align="center" cellpadding="0" cellspacing="0" class="font_td">
+			<!--{if $_SCONFIG[tenpay] != ''}-->
+  <form id="form10" name="form10" method="POST" action="tpay.php">
+    <tr>
+      <td height="35" colspan="2" align="center"><span style="font-weight: bold; font-size: 14"> 财富通在线支付平台</span></td>
+    </tr>
+    <tr>
+      <td height="2" colspan="2" align="center"><hr align="right" width="98%" size="1" /></td>
+    </tr>
+    <tr>
+      <td width="130" height="25" align="center"><span style="font-weight: bold">用 户 名</span></td>
+      <td width="629">$space[username] (我的积分:<span style="color: #FF0000;font-weight: bold;">$space[credit]</span>积分)</td>
+    </tr>
+    <tr>
+      <td width="130" height="25" align="center"><span style="font-weight: bold; color: #FF0000">充值金额</span></td>
+      <td><input name="paym" type="text" class="form_ltext" id="paym" onkeypress="if (event.keyCode!=46 &amp;&amp; event.keyCode!=45 &amp;&amp; (event.keyCode&lt;48 || event.keyCode&gt;57)) event.returnValue=false" value="10" size="10" />
+        元 (如:100.00,10.01) $_SCONFIG[tps]手续费</td>
+    </tr>
+    <tr>
+      <td width="130" height="25" align="center"><strong>充值比率</strong></td>
+      <td>1人民币=$_SCONFIG[bilv]积分</td>
+    </tr>
+    <tr>
+      <td height="85" colspan="2" align="center"><input name="Submit3" type="image" value="我要充值" src="$_SCONFIG[tfile]/images/grey_logo.jpg" title="我要充值"  />      </td>
+    </tr>
+	
+  </form>
+		<!--{/if}-->
+		<!--{if $_SCONFIG[cbankpay] != ''}-->
+  <form id="form10" name="form10" method="POST" action="chinabank.php">
+    <tr>
+      <td height="35" colspan="2" align="center"><span style="font-weight: bold; font-size: 14"> 网银在线支付平台</span></td>
+    </tr>
+    <tr>
+      <td height="2" colspan="2" align="center"><hr align="right" width="98%" size="1" /></td>
+    </tr>
+    <tr>
+      <td width="130" height="25" align="center"><span style="font-weight: bold">用 户 名</span></td>
+      <td width="629">$space[username] (我的积分:<span style="color: #FF0000;font-weight: bold;">$space[credit]</span>积分)</td>
+    </tr>
+    <tr>
+      <td width="130" height="25" align="center"><span style="font-weight: bold; color: #FF0000">充值金额</span></td>
+      <td><input name="v_amount" type="text" class="form_ltext" id="v_amount" onkeypress="if (event.keyCode!=46 &amp;&amp; event.keyCode!=45 &amp;&amp; (event.keyCode&lt;48 || event.keyCode&gt;57)) event.returnValue=false" value="10" size="10" />
+        元 (如:100.00,10.01) $_SCONFIG[cbs]手续费</td>
+    </tr>
+    <tr>
+      <td width="130" height="25" align="center"><strong>充值比率</strong></td>
+      <td>1人民币=$_SCONFIG[bilv]积分</td>
+    </tr>
+    <tr>
+      <td height="85" colspan="2" align="center"><input name="Submit3" type="image" value="我要充值" src="$_SCONFIG[cbfile]/images/paylogo.gif" title="我要充值" />      </td>
+    </tr>
+	
+  </form>
+		<!--{/if}-->
+		<!--{loop $list $value}-->
+    <tr>
+      <td colspan="2" align="center"></td>
+    </tr>
+		<!--{/loop}-->
+</table>
+    <tr>
+      <td height="2" colspan="2" align="center"><hr align="right" width="98%" size="1" /></td>
+    </tr>
+<div id="blog_article" class="article">
+          <table cellspacing="0" cellpadding="0">
+            <tr>
+              <td align="middle" height="40"><img height="21" src="images/default_105.jpg" width="84" border="0" /></td>
+              <td align="middle" height="40"><img height="30" src="images/gonghang.gif" width="100" border="0" /></td>
+              <td align="middle" height="40"><img height="30" src="images/logo_ccb.gif" width="100" border="0" /></td>
+              <td align="middle" height="40"><img height="31" src="images/logo_bc.gif" width="100" border="0" /></td>
+              <td align="middle" height="40"><img height="30" src="images/logo_cmb.gif" width="100" border="0" /></td>
+            </tr>
+            <tr>
+              <td align="middle" height="40">　</td>
+              <td align="middle" height="40"><img height="30" src="images/logo_jtyh.gif" width="100" border="0" /></td>
+              <td align="middle" height="40"><img height="30" src="images/logo_xingye.gif" width="100" border="0" /></td>
+              <td align="middle" height="40"><img height="30" src="images/shanghaipufa.gif" width="100" border="0" /></td>
+              <td align="middle" height="40"><img height="30" src="images/nonghang.gif" width="100" border="0" /></td>
+            </tr>
+            <tr>
+              <td align="middle" height="40">　</td>
+              <td align="middle" height="40"><img height="30" src="images/zhongxin-banner_logo.gif" width="100" border="0" /></td>
+              <td align="middle" height="40"><img height="30" src="images/guangfa.gif" width="100" border="0" /></td>
+              <td align="middle" height="40"><img height="31" src="images/ali.gif" width="88" border="0" /></td>
+              <td align="middle" height="40"><img height="31" src="images/dianx.gif" width="88" border="0" /></td>
+            </tr>
+            <tr>
+              <td align="middle" height="40">　</td>
+              <td align="middle" height="40"><img height="31" src="images/mob.gif" width="88" border="0" /></td>
+              <td align="middle" height="40"><img height="31" src="images/un.gif" width="88" border="0" /></td>
+              <td align="middle" height="40"><img height="31" src="images/xlt.gif" width="88" border="0" /></td>
+              <td align="middle" height="40"><img height="31" src="images/qq.jpg" width="88" border="0" /></td>
+            </tr>
+          </table>
+          <p><br />
+        </p>
+</div>
+<div class="f_status s_clear">
+	<a href="javascript:;" onclick="window.scrollTo(0,0);" id="a_top" title="TOP">TOP</a>
+</div>
+<!--{template footer}-->

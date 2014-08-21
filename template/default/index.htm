@@ -1,0 +1,156 @@
+<!--{eval $_TPL['nosidebar']=1;}-->
+<!--{template header}-->
+<script type="text/javascript" src="template/default/script/js.js"></script>
+<script type="text/javascript" src="template/default/script/jquery.js"></script>
+<script type="text/javascript" src="template/default/script/jquery.cycle.js"></script>
+<script type="text/javascript"> var jq = jQuery.noConflict(); </script>
+
+<script type="text/javascript">
+	jq(function(){
+		jq('#ben').cycle({ 
+				fx:'scrollLeft',
+				pager:'#btn'
+		});
+	})
+</script>
+<style type="text/css">
+#menu ul .right_login{background:url(template/default/image/login_top.gif) no-repeat left top;width:226px;height:28px; padding:8px 8px 8px 8px;float:right;font-size:12px;}
+#menu ul .right_login a{ display:none;}
+.login_lo{ display:none;}
+.login_zc{ display:none;}
+#menu ul li .home{background:url(template/default/image/menu_img.gif) no-repeat left -88px;width:52px;height:34px;padding:10px 6px 0 0; display:block;font-size:15px;color:#aa4074;text-align:center; font-weight:bold;}
+#menu ul li .home:hover{background:url(template/default/image/menu_img.gif) no-repeat left -88px;width:52px;height:34px;padding:10px 6px 0 0; display:block;font-size:15px;color:#aa4074;text-align:center; font-weight:bold;}
+.STYLE1 {
+	color: #FF0000;
+	font-weight: bold;
+}
+.STYLE2 {
+	color: #FF0033;
+	font-weight: bold;
+}
+</style>
+<!-- 图片、登录 -->
+<div id="bnlogin">
+<div id="bn"><div id="btn"></div>
+<div id="ben">
+<a href="index.php.htm" tppabs="/do.php?ac=fd82d087959c974d97d30ecdc0ffb1ad"><img src="template/default/image/pic2.jpg" tppabs="/template/default/image/pic2.jpg" border="0"/></a>
+<a href="index.php.htm" tppabs="/do.php?ac=fd82d087959c974d97d30ecdc0ffb1ad"><img src="template/default/image/pic.jpg" tppabs="/template/default/image/pic.jpg" border="0"/></a>
+</div></div>
+<div class="login">
+<div class="line"></div>
+<!--{if $_SGLOBAL[supe_uid]}-->
+<div class="nr2">
+<!--{avatar($_SGLOBAL[supe_uid],middle,false,$_space[sex])}-->
+<ul class="ul">
+<li>欢迎您！<font color="cb0069">{$_SN[$_SGLOBAL[supe_uid]]}</font></li>
+<!--{if $vips[ztime] > 0}-->
+<li><img src="/image/pay/vip.gif" border="0" width="40" height="16" /></li>
+<!--{else}-->
+<li><font color="#666666">普通会员</font> <a href="/pay.php?pay=buyvip">升级VIP</a></li>
+<!--{/if}-->
+<li>当前金豆：{$_SGLOBAL[member][credit]} 个</li>
+<li><a href="space.php?do=home" class="a">个人中心</a> <a href="cp.php?ac=common&op=logout&uhash=$_SGLOBAL[uhash]" class="e">退出</a></li>
+</ul>
+<div class="kj">
+<ul>
+<li><img src="template/default/image/rzimg.gif" /><a href="cp.php?ac=blog">写日志</a></li>
+<li><img src="template/default/image/photoimg.gif" /><a href="cp.php?ac=upload">传照片</a></li>
+<li><img src="template/default/image/tuo.gif" /><a href="payf.php">充金豆</a></li>
+<li><img src="template/default/image/yqimg.gif" /><a href="cp.php?ac=invite">邀请好友</a></li>
+</ul>
+</div>
+</div>
+<!--{else}-->
+<div class="nr">
+<form id="loginform" name="loginform" action="do.php?ac=$_SCONFIG[login_action]&$url_plus&ref" method="post">
+<ul>
+<li class="tit"><label for="username">帐号：</label></li><li class="input"><input type="text" name="username" id="username" class="t_input" value="$membername" /></li>
+<li class="tit"><label for="password">密码：</label></li><li class="input"><input type="password" name="password" id="password" class="t_input" value="$password" /></li>
+<li class="tit"></li><li class="qt"><input type="checkbox" id="cookietime" name="cookietime" value="315360000" $cookiecheck style="margin-bottom: -2px;" /><label for="cookietime">下次自动登录</label></li>
+<li class="tit"></li><li class="qt"><input type="hidden" name="refer" value="space.php?do=home" />
+<input type="submit" id="loginsubmit" name="loginsubmit" value="登录" class="submit" tabindex="5" />  <a href="do.php?ac=lostpasswd" target="_blank"><font color="#E40F74">找回密码</font></a>
+<!--<input type="image" id="loginsubmit" name="loginsubmit" value="登录" src="template/default/image/login_bn.gif" />--></li>
+<li class="zc">还不是会员？  <a href="do.php?ac=b074b096e28670e8301d209041ba2cdf">立即注册</a></li>
+</ul><input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+</form>
+</div>
+<!--{/if}-->
+
+<div class="bottom"></div>
+</div>
+</div>
+<!-- 图片、登录end -->
+
+<!-- 搜索、人数 -->
+<div id="soren">
+<div class="search"> 
+		<form action="cp.php" method="get">
+		<input type="hidden" name="ac" value="friend">
+		<input type="hidden" name="op" value="search">
+		<input type="hidden" name="all" value="yes">
+		<input type="hidden" name="searchsubmit" value="找人">
+		<input type="hidden" name="searchmode" value="1">
+		<b>快速搜索</b>&nbsp;&nbsp;我要找&nbsp;<select name="sex" size="1"><option value="2">美女</option><option value="1">帅哥</option></select>&nbsp;&nbsp;年龄<input type="text" name="startage" value="18" size="2" class="t_input" />&nbsp;&nbsp;到&nbsp;&nbsp;<input type="text" name="endage" value="32" size="2" class="t_input" />&nbsp;&nbsp;地区 &nbsp;&nbsp;<span id="residecitybox1"></span><script type="text/javascript" src="/source/script_city.js"></script>
+		<script type="text/javascript">showprovince('resideprovince1', 'residecity1', '', 'residecitybox1');showcity('residecity1', '', 'resideprovince1', 'residecitybox1');</script>&nbsp;&nbsp;<input type="checkbox" name="avatar" value="1" class="in">有照片&nbsp;<input type="submit" class="submit" value="开始搜索">
+		</form>
+</div> 
+<div class="ren">
+在线会员 <span class="STYLE1"><font>3568</font></span> 人<br />
+共有 <span class="STYLE2"><font>182588</font></span> 位会员定居</div>
+</div>
+<!-- 搜索、人数end -->
+
+<!-- 人气排行榜、右侧 -->
+<div id="main">
+<div class="tongc">
+<div class="tit">
+<h2>人气排行榜</h2>
+<div class="cs"><a href='cp.php?resideprovince=%B1%B1%BE%A9&amp;residecity=&amp;name=&amp;username=&amp;searchsubmit=%B2%E9%D5%D2&amp;ac=friend&amp;op=search&amp;type=base' target='_blank'>上海</a> | <a href='cp.php?resideprovince=%C9%CF%BA%A3&amp;residecity=&amp;name=&amp;username=&amp;searchsubmit=%B2%E9%D5%D2&amp;ac=friend&amp;op=search&amp;type=base' target='_blank'>广东</a> | <a href='cp.php?resideprovince=广东&amp;residecity=广州&amp;name=&amp;username=&amp;searchsubmit=查找&amp;ac=friend&amp;op=search&amp;type=base' target='_blank'>北京</a> | <a href='cp.php?resideprovince=%BA%FE%B1%B1&amp;residecity=%CE%E4%BA%BA&amp;name=&amp;username=&amp;searchsubmit=%B2%E9%D5%D2&amp;ac=friend&amp;op=search&amp;type=base' target='_blank'>成都</a> | <a href='cp.php?resideprovince=%D6%D8%C7%EC&amp;residecity=&amp;name=&amp;username=&amp;searchsubmit=%B2%E9%D5%D2&amp;ac=friend&amp;op=search&amp;type=base' target='_blank'>重庆</a> | <a href='cp.php?resideprovince=%CC%EC%BD%F2&amp;residecity=&amp;name=&amp;username=&amp;searchsubmit=%B2%E9%D5%D2&amp;ac=friend&amp;op=search&amp;type=base' target='_blank'>江苏</a> | <a href='cp.php?resideprovince=%B9%E3%B6%AB&amp;residecity=%C9%EE%DB%DA&amp;name=&amp;username=&amp;searchsubmit=%B2%E9%D5%D2&amp;ac=friend&amp;op=search&amp;type=base' target='_blank'>河南</a> |<a href='cp.php?resideprovince=%BA%FE%C4%CF&amp;residecity=%B3%A4%C9%B3&amp;name=&amp;username=&amp;searchsubmit=%B2%E9%D5%D2&amp;ac=friend&amp;op=search&amp;type=base' target='_blank'>同城交友爱情公寓欢迎您，祝您找到同城情人</a></div>
+<div class="more"><a href="cp.php?ac=friend&op=search&all=yes">更多>></a></div>
+</div>
+
+<!--{loop $spacelist $value}-->			
+<div class="grxx">
+<table width="100%"><tr>
+<td width="140" align="center">
+<div class="arin_r_t"><div class="arin_l_t"><div class="arin_r_b"><div class="arin_l_b">
+<a href="space.php?uid=$value[uid]" title="{$_SN[$value[uid]]}" target="_blank">
+<!--{avatar($value[uid],middle,false,$value[sex])}--></a>
+<a href="space.php?uid=$value[uid]" title="{$_SN[$value[uid]]}" target="_blank"><div class="user_div3" title="{$_SN[$value[uid]]}" ></div></a></div></div></div></div>
+</td>
+<td valign="top">
+<h2><a href="space.php?uid=$value[uid]" target="_blank">{$_SN[$value[uid]]}</a><!--{if $value[sex]==2}-->美女<!--{elseif $value[sex]==1}-->帅哥<!--{/if}--> {$value[birth]}</h2>
+<font>来自$value[resideprovince] $value[residecity]</font>
+<a href="cp.php?ac=friend&op=search&view=reside" target="_blank">&raquo; 查找同城</a>
+</br>
+<a href="cp.php?ac=friend&op=search&view=sex" target="_blank">&raquo; 查找男女朋友</a>
+</br><font></font>
+<a href="space.php?uid=$value[uid]" class="xq">查看详细资料</a>
+</td></tr></table></div>
+<!--{/loop}-->
+</div>
+
+<div class="mainr">
+
+<div class="new">
+<div class="gqjy"><img src="template/default/image/tit2.gif" align="absmiddle" /> 会员动态</div>
+<div class="list">
+<!--{template data/blocktpl/2}-->
+</div>
+</div>
+
+<div class="new">
+<div class="gqjy"><img src="template/default/image/tit2.gif" align="absmiddle" /> 推荐日志</div>
+<div class="list">
+<!--{template data/blocktpl/1}-->
+</div>
+</div>
+
+</div>
+</div>
+<!-- 同城情人、右侧end -->
+<div id="link">
+<div class="link_lj"><b>友情链接：</b><a href='http://www.10ss.info' target='_blank'>同城爱情公寓</a><a href="http://www.baidu.com"></a> <a href='http://www.10ss.info' target='_blank'>同城我爱交友</a> <a href='http://www.10ss.info' target='_blank'>同城交友</a> <a href='http://www.10ss.info' target='_blank'>同城婚介所  </a> <a href="http://www.10ss.info" target="_blank">同城职业学院论坛</a> <a href="http://www.10ss.info" target="_blank">山东理工大学论坛</a> <a href="http://www.10ss.info" target="_blank">同城论坛</a></a></div>
+</div>
+<!--{template footer}-->
+

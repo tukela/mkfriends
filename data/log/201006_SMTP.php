@@ -1,0 +1,12 @@
+<?PHP exit;?>	2010-06-16 23:40:42		113.141.75.156	1	/do.php?ac=sendmail&rand=1276702841	(smtp.qq.com:25) MAIL FROM - 503 Error: need EHLO and AUTH first !
+<?PHP exit;?>	2010-06-17 14:27:35		113.141.91.219	0	/do.php?ac=sendmail&rand=1276756055	(smtp.qq.com:25) MAIL FROM - 503 Error: need EHLO and AUTH first !
+<?PHP exit;?>	2010-06-17 14:33:19		113.141.91.219	0	/do.php?ac=sendmail&rand=1276756399	(smtp.qq.com:25) MAIL FROM - 503 Error: need EHLO and AUTH first !
+<?PHP exit;?>	2010-06-18 12:20:03		113.141.87.27	2	/do.php?ac=sendmail&rand=1276834802	(smtp.qq.com:25) MAIL FROM - 503 Error: need EHLO and AUTH first !
+<?PHP exit;?>	2010-06-18 12:26:47		113.141.87.27	2	/do.php?ac=sendmail&rand=1276835206	(smtp.qq.com:25) MAIL FROM - 503 Error: need EHLO and AUTH first !
+<?PHP exit;?>	2010-06-18 12:32:24		113.141.87.27	2	/do.php?ac=sendmail&rand=1276835543	(smtp.qq.com:25) MAIL FROM - 503 Error: need EHLO and AUTH first !
+<?PHP exit;?>	2010-06-18 12:37:32		113.141.87.27	2	/do.php?ac=sendmail&rand=1276835851	(smtp.qq.com:25) MAIL FROM - 503 Error: need EHLO and AUTH first !
+<?PHP exit;?>	2010-06-18 12:38:14		113.141.87.27	0	/do.php?ac=sendmail&rand=1276835894	(smtp.qq.com:25) MAIL FROM - 503 Error: need EHLO and AUTH first !
+<?PHP exit;?>	2010-06-18 13:02:00		113.141.87.27	1	/do.php?ac=sendmail&rand=1276837319	(smtp.qq.com:25) MAIL FROM - 503 Error: need EHLO and AUTH first !
+<?PHP exit;?>	2010-06-18 18:33:15		113.141.87.27	3	/do.php?ac=sendmail&rand=1276857194	(smtp.qq.com:25) MAIL FROM - 503 Error: need EHLO and AUTH first !
+<?PHP exit;?>	2010-06-18 18:35:06		113.141.87.27	3	/do.php?ac=sendmail&rand=1276857305	(smtp.qq.com:25) MAIL FROM - 503 Error: need EHLO and AUTH first !
+<?PHP exit;?>	2010-06-27 21:28:19		124.116.130.162	31	/do.php?ac=sendmail&rand=1277645298	(smtp.qq.com:25) MAIL FROM - 503 Error: need EHLO and AUTH first !

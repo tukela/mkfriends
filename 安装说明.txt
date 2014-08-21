@@ -1,0 +1,12 @@
+第一步安装
+把ucenter\data\install.lock 这个文件删除
+http://www.你的域名.com/ucenter/install/index.php安装完毕即可
+
+第二步安装
+打开MYSQL数据创建数据库名称导入数据（数据在data\backup_110921_g0iAT6\110921_UNwlGr-1.sql)导入你刚创建的数据里面`完事
+
+第三步安装
+打开根目录下的config.php修改里面相关的数据库信息即可！你懂的！
+
+————————————————
+更多商业破解源码www.idc1000.net

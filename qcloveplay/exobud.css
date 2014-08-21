@@ -1,0 +1,30 @@
+A {
+	COLOR: silver; TEXT-DECORATION: none
+}
+A:link {
+	COLOR: silver; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: silver; TEXT-DECORATION: none
+}
+A:active {
+	COLOR: white; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: white; TEXT-DECORATION: none
+}
+BODY {
+	BACKGROUND-IMAGE: url(./img/background.gif); MARGIN: 0px; OVERFLOW: hidden; CURSOR: crosshair
+}
+BODY {
+	FONT-SIZE: 9pt; FONT-FAMILY: 'Tahoma','Verdana','Arial'
+}
+TD {
+	FONT-SIZE: 9pt; FONT-FAMILY: 'Tahoma','Verdana','Arial'
+}
+.title {
+	FONT-SIZE: 9pt; COLOR: #ffe7ff; FONT-FAMILY: 'Tahoma','Verdana','Arial'
+}
+.time {
+	FONT-SIZE: 9pt; COLOR: #ffe7ff; FONT-FAMILY: 'Tahoma','Verdana','Arial'
+}

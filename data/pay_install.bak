@@ -1,0 +1,132 @@
+<?php
+
+if(!defined('IN_UCHOME')) {
+	exit('Access Denied');
+}
+$vip_var = "V1.42";
+$vip_info = "VIP积分充值系统";
+$sql_a = "CREATE TABLE IF NOT EXISTS ".tname('mardpay')." (
+  `pid` int(8) NOT NULL auto_increment,
+  `payno` varchar(32) NOT NULL,
+  `payuid` int(8) NOT NULL,
+  `paymcard` double(10,2) NOT NULL,
+  `paynote` varchar(100) default NULL,
+  `paytext` varchar(100) NOT NULL,
+  `paytime` datetime default NULL,
+  PRIMARY KEY  (`pid`)
+) ENGINE=MyISAM DEFAULT CHARSET=".$_SC['dbcharset'].";";
+$sql_b = "CREATE TABLE IF NOT EXISTS ".tname('vipspace')." (
+  `vuid` int(10) NOT NULL,
+  `stime` int(11) NOT NULL,
+  `vday` int(4) NOT NULL,
+  `vtime` datetime NOT NULL,
+  `vgid` int(4) default NULL
+) ENGINE=MyISAM DEFAULT CHARSET=".$_SC['dbcharset'].";";
+	$inarr = array( 
+          'clfile' => 'pay/callback',
+          'aps' => '4',
+          'apm' => 'nk3gokh5ietd9uvau7iuqheqj3h75osu',
+          'appay' => '2088002009175749',
+          'apfile' => 'pay/alipay',
+          'pay_help' => 'space.php?uid=1&do=blog&id=2',
+          'vipjf' => '60|30
+90|50',
+          'ctvip' => '1',
+          'vipcls' => '30|10|0
+180|60|90
+360|120|90',
+          'bilv' => '1',
+          'vipapp' => '3',
+          'cbs' => '1',
+          'cbankm' => '4354rerrertgfd34ewererw',
+          'cbankpay' => '20971484',
+          'cbfile' => 'pay/chinabank',
+          'tps' => '0',
+          'tenpay' => '1202965901',
+          'tenpaym' => 'c2a5193296e0d94f3835b5deff450529',
+          'tfile' => 'pay/tenpay',
+          'clpay' => '10000661779',
+          'clm' => '47d87ahR373Nh7JL0jT7109n9NtZY380929lVp0Gs06ouln59X4UAd7Ne0oL',
+          'cls' => '0',
+          'clbfile' => 'pay/callbank',
+          'clbpay' => '10000432521',
+          'clbm' => '8UPp0KE8sq73zVP370vko7C39403rtK1YwX40Td6irH216036H27Eb12792t',
+          'clbs' => '0',
+          'ppfile' => 'pay/paypal',
+          'pppay' => 'cvbird@163.com',
+          'ppm' => '请输入安全ID(商户密匙)',
+          'pps' => '0',
+          'ppbilv' => '1',
+          'web_paykey' => md5(time()),
+          'payurl' => '0',
+          'payemail' => 'sales@justican.com',
+          'tpnote' => '财付通构建全新的综合支付平台，业务覆盖B2B、B2C和C2C各领域，提供卓越的网上支付及清算服务。针对个人用户，财付通提供了包括在线充值、提现、支付、交易管理等丰富功能；针对企业用户，财付通提供了安全可靠的支付清算服务和极富特色的QQ营销资源支持。',
+          'cbnote' => '  网银在线凭借强大的技术实力和“贴近用户所需”的服务理念，以“电子支付专家”为发展定位，联合国内各大银行以及VISA、MasterCard、JCB等国际信用卡组织，致力于为中国企业提供专业而安全的电子支付解决方案，帮助中国企业快速持续和健康成长。',
+          'apnote' => '支付宝（中国）网络技术有限公司是国内领先的独立第三方支付平台，由阿里巴巴集团创办。支付宝（www.alipay.com）致力于为中国电子商务提供“简单、安全、快速”的在线支付解决方案。 ',
+          'clnote' => ' YeePay易宝的卓越服务得到了业界的广泛承认。2007年，YeePay易宝在中国电子商务金融与支付行业发展大会上荣获中国电子支付优秀企业奖；2006年，YeePay易宝分获电子商务财富年会"最佳支付平台"、2006电子支付应用峰会"最可信赖电子支付品牌"、中国3G百强调查无线增值领域最佳支付奖、电子支付高层论坛"电子支付创新奖"、第九届电子商务大会"电子商务诚信企业奖"等多个奖项；2005年，YeePay易宝还曾被中国互联网协会评为"创新50强"。',
+          'clbnote' => ' YeePay易宝的卓越服务得到了业界的广泛承认。2007年，YeePay易宝在中国电子商务金融与支付行业发展大会上荣获中国电子支付优秀企业奖；2006年，YeePay易宝分获电子商务财富年会"最佳支付平台"、2006电子支付应用峰会"最可信赖电子支付品牌"、中国3G百强调查无线增值领域最佳支付奖、电子支付高层论坛"电子支付创新奖"、第九届电子商务大会"电子商务诚信企业奖"等多个奖项；2005年，YeePay易宝还曾被中国互联网协会评为"创新50强"。',
+          'ppnote' => '   现已拥有 1.5亿个账户，其服务遍及190 个国家和地区，PayPal为各种行业的用户提供快速、实惠而便捷的在线付款服务.',
+          'clsnote' => '立即让您成为最耀眼的那个人！成为VIP会员，享有本站提供的丰富特色功能，结交天下好友! ',
+          'jfnote' => '立即让您成为最耀眼的那个人！成为VIP会员，享有本站提供的丰富特色功能，结交天下好友! ',
+          'viplookinfo' => '1',
+   );
+   //$rurl[1][0]
+   
+   function vip_install($key,$value) {
+		   	  global $_SGLOBAL;
+                  $sql = $_SGLOBAL['db']->query("select * from ".tname('config').
+		 " where var='".$key."'");
+                  $row = $_SGLOBAL['db']->fetch_row($sql);
+     if (isset($row[0])) 
+		 {
+           $_SGLOBAL['db']->query("update ".tname('config').
+		   " set datavalue='".$value."' where var='".$key."'");
+             } else {
+           $_SGLOBAL['db']->query("INSERT INTO ".tname('config').
+		   "(var,datavalue) values ('".$key."','".$value."');");
+			  }
+		   }
+		   
+		   
+   if (!empty($_POST[vipsetup]))
+       {
+   if (intval($_POST[ro]) == 1)
+       {
+      $sql="drop TABLE IF EXISTS ".tname('mardpay');
+	  $_SGLOBAL['db']->query($sql);
+      $sql="drop TABLE IF EXISTS ".tname('vipspace');
+	  $_SGLOBAL['db']->query($sql);
+          } 
+		  if (intval($_POST[ro]) == 3)  
+		  {
+				copy("./pay/pay_install.php","./data/pay_install.bak");						
+	            @unlink("./pay/pay_install.php");
+				
+	             showmessage('','pay.php',0);
+		     } 
+			 if (intval($_POST[ro]) <= 2) {
+	$_SGLOBAL['db']->query($sql_a);
+	$_SGLOBAL['db']->query($sql_b);
+	$surl = $_SERVER[HTTP_REFERER];
+    preg_match_all("/(.*)pay.php/",$surl, $rurl); 
+	$inarr[payurl] = empty($_POST[payurl]) ? $rurl[1][0] : $_POST[payurl];
+	$inarr[paykey] = empty($_POST[paykey]) ? "11" : $_POST[paykey];
+   while (list($key,$value) = each($inarr)) 
+   {
+     if (empty($_SCONFIG[$key]))  
+	        {
+			vip_install($key,$value);
+            }
+      }
+	  
+	include_once(S_ROOT.'./source/function_cache.php');
+		config_cache();
+				@copy("./pay/pay_install.php","./data/pay_install.bak");				
+	            @unlink("./pay/pay_install.php");
+				}
+				
+	showmessage('安装成功.','pay.php',3);
+                                    }
+include template('pay_install');
+
+?>

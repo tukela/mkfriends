@@ -1,0 +1,15 @@
+<?PHP exit;?>	2010-06-16 23:40:42		113.141.75.156	1	/do.php?ac=sendmail&rand=1276702841	1210085808@qq.com sendmail failed.
+<?PHP exit;?>	2010-06-17 14:27:35		113.141.91.219	0	/do.php?ac=sendmail&rand=1276756055	hzxx@vip.qq.com sendmail failed.
+<?PHP exit;?>	2010-06-17 14:33:19		113.141.91.219	0	/do.php?ac=sendmail&rand=1276756399	hzxx@vip.qq.com sendmail failed.
+<?PHP exit;?>	2010-06-18 12:20:03		113.141.87.27	2	/do.php?ac=sendmail&rand=1276834802	s13700265364@21cn.com sendmail failed.
+<?PHP exit;?>	2010-06-18 12:26:47		113.141.87.27	2	/do.php?ac=sendmail&rand=1276835206	s13700265364@21cn.com sendmail failed.
+<?PHP exit;?>	2010-06-18 12:32:24		113.141.87.27	2	/do.php?ac=sendmail&rand=1276835543	120929311@qq.com sendmail failed.
+<?PHP exit;?>	2010-06-18 12:37:32		113.141.87.27	2	/do.php?ac=sendmail&rand=1276835851	695011680@qq.com sendmail failed.
+<?PHP exit;?>	2010-06-18 12:38:14		113.141.87.27	0	/do.php?ac=sendmail&rand=1276835894	1210085808@qq.com sendmail failed.
+<?PHP exit;?>	2010-06-18 12:46:17		113.141.87.27	1	/do.php?ac=sendmail&rand=1276836376	s13700265364@21cn.com sendmail failed.
+<?PHP exit;?>	2010-06-18 12:53:18		113.141.87.27	1	/do.php?ac=sendmail&rand=1276836797	s13700265364@21cn.com sendmail failed.
+<?PHP exit;?>	2010-06-18 12:54:58		113.141.87.27	1	/do.php?ac=sendmail&rand=1276836897	s13700265364@21cn.com sendmail failed.
+<?PHP exit;?>	2010-06-18 13:02:00		113.141.87.27	1	/do.php?ac=sendmail&rand=1276837319	s13700265364@21cn.com sendmail failed.
+<?PHP exit;?>	2010-06-18 18:33:15		113.141.87.27	3	/do.php?ac=sendmail&rand=1276857194	s13700265364@21cn.com sendmail failed.
+<?PHP exit;?>	2010-06-18 18:35:06		113.141.87.27	3	/do.php?ac=sendmail&rand=1276857305	hzxx@vip.qq.com sendmail failed.
+<?PHP exit;?>	2010-06-27 21:28:19		124.116.130.162	31	/do.php?ac=sendmail&rand=1277645298	1123319662@.qq.com sendmail failed.

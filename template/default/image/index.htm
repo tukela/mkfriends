@@ -1,0 +1,383 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3c.org/TR/1999/REC-html401-19991224/loose.dtd">
+<HTML xmlns="http://www.w3.org/1999/xhtml">
+<HEAD>
+<title><!--{if !empty($_SGLOBAL['member']['newpm'])}-->【新消息】<!--{/if}--><!--{if $_TPL['titles']}--><!--{loop $_TPL['titles'] $value}--><!--{if $value}-->$value - <!--{/if}--><!--{/loop}--><!--{/if}--><!--{if $space}-->{$_SN[$space[uid]]} - <!--{/if}-->$_SCONFIG[sitename]-交友、征婚、相亲、千里姻缘一线牵中国专业交友网</title>
+<meta name="baidu_union_verify" content="fcb5bc386ea23f8917c0b0f2cf73ea02">
+<meta http-equiv="content-type" content="text/html; charset=$_SC[charset]" />
+<meta http-equiv="x-ua-compatible" content="ie=7" />
+<meta name="Description" content="同城交友网 ，同城约会、异性交友、-交友、征婚、相亲、最好的交友平台" />
+<meta name="Keywords" content="http://love.hz0916.net" />
+<SCRIPT language=javascript src="index.files/script_cookie.js" 
+type=text/javascript></SCRIPT>
+<SCRIPT language=javascript src="index.files/script_common.js" 
+type=text/javascript></SCRIPT>
+<SCRIPT language=javascript src="index.files/script_menu.js" 
+type=text/javascript></SCRIPT>
+<SCRIPT language=javascript src="index.files/script_ajax.js" 
+type=text/javascript></SCRIPT>
+<SCRIPT language=javascript src="index.files/script_face.js" 
+type=text/javascript></SCRIPT>
+<SCRIPT language=javascript src="index.files/script_manage.js" 
+type=text/javascript></SCRIPT>
+<script src="index_files/city1.js" type="text/javascript"></script>
+<SCRIPT type=text/javascript>
+
+function clickmenu(obj)
+
+{
+
+alert("注册用户后,这里就属于你");
+
+obj.href=document.getElementById("reg").href;	
+
+document.getElementById("reg").focus();
+
+
+
+}
+
+window.moveTo(0,0);
+
+window.resizeTo(screen.availWidth,screen.availHeight); //窗口最大化
+
+</SCRIPT>
+
+<LINK href="image/favicon.ico" rel="shortcut icon">
+<LINK title=rsd 
+href="xmlrpc.php?rsd=" type=application/rsd+xml rel=edituri>
+<META content="MSHTML 6.00.2900.6003" name=GENERATOR>
+<LINK href="index.files/music.css" type=text/css rel=stylesheet>
+<LINK href="index.files/music.css" type=text/css rel=stylesheet>
+<STYLE type=text/css>
+@import url(index.files/style.css );
+@import url(index.files/music.css );
+</STYLE>
+</HEAD>
+<BODY>
+<DIV id=append_parent></DIV>
+<DIV id=ajaxwaitid></DIV>
+<TABLE cellSpacing=0 cellPadding=0 width=950 align=center border=0>
+  <TBODY>
+    <TR>
+      <TD><DIV class=nav style="MARGIN: 0px auto">
+          <DIV class=navC>
+            <UL>
+<LI><a href="/index.php"><img src="$_SCONFIG[sitelogo]" alt="$_SCONFIG[sitename]" /></a></LI>
+<LI class=nav_line>
+<LI><A href="/space.php">个人中心</A></LI>
+              <LI class=nav_line></LI>
+              <LI><A onclick=clickmenu(this) href="javascript:void(0)">同城好友</A> </LI>
+              <LI class=nav_line></LI>
+              <LI><A href="/cp.php?ac=invite">迷人女士</A> </LI>
+              <LI class=nav_line></LI>
+              <LI><A href="/pay.php?ac=vip">大方绅士 </A> </LI>
+              <LI class=nav_line></LI>
+              <LI><A href="/cp.php?ac=profile">搜索好友</A> </LI>
+            </UL>
+<div class="nav_account">
+<div align="left"> </br>
+<style type="text/css">
+<!--
+.STYLE1 {color: #FFFFFF}
+-->
+</style>
+ <span class="STYLE1"><A  onclick="this.style.behavior='url(#default#homepage)';this.setHomePage('http://www.5lyx.cn');" href="#">设为首页</A> | <A  
+href="javascript:window.external.addFavorite('http://www.5lyx.cn','未来站长网址导航');">加入收藏</A></span>
+       </DIV> </DIV>
+</TD>
+    </TR>
+  </TBODY>
+</TABLE>
+<table width="970" border="0" align="center" cellpadding="0" cellspacing="0">
+  <tr>
+    <td><DIV class=top1>
+  <DIV class=story091001>
+    <DIV class=story_l></DIV>
+    <DIV class=storyin><B class=l1></B><B class=l2></B><B class=l3></B><B 
+class=l4></B>
+      <DIV class=content>
+        <!-- 成功故事flash -->
+        <SPAN 
+style="DISPLAY: block; COLOR: #ff0000"><IMG src="index.files/font.gif"></SPAN>
+        <P id=story_flash style="DISPLAY: block">
+<IMG src="http://www.232.com/template/default/image/pic2.jpg" width=656 height=216>
+        </P>
+      </DIV>
+    </DIV>
+  </DIV>
+  <DIV class="master091115 mtbd091115" style="MARGIN-TOP: 10px; FLOAT: right"><B 
+class=l1></B><B class=l2></B><B class=l3></B><B class=l4></B>
+    <div class="content" style=" height:100px; background:#F3F3F3" >
+      <form id="loginform" name="loginform"  action="do.php?ac=$_SCONFIG[login_action]&$url_plus&ref" method="post">
+        <p class="tit">
+          <label for="username">用户名</label>
+          <input type="text" name="username" id="username" class="t_input" value="$membername" />
+        </p>
+        <p class="tit">
+          <label for="password">密　码</label>
+          <input type="password" name="password" id="password" class="t_input" value="$password" />
+        </p>
+        <p class="tit">
+          <input type="hidden" name="refer" value="space.php?do=home" />
+          <input type="submit" id="loginsubmit" name="loginsubmit" value="登录" class="submit" />
+          <a href="do.php?ac=$_SCONFIG[register_action]" id="reg">新用户注册</a>
+          <input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+        </p>
+      </form>
+    </div>
+    <B 
+class="l4 bb3"></B><B class="l3 bb3"></B><B class="l2 bb3"></B><B 
+class=l1></B></DIV>
+  <DIV class=login091001>
+    <H2 style="MARGIN-TOP: 5px; LINE-HEIGHT: 40px">已有 <SPAN 
+style="FONT-SIZE: 24px">2,312,793</SPAN> 对找到伴侣</H2>
+    <P class=p2></P>
+    <UL>
+      <LI class=num>2</LI>
+      <LI class=num>4</LI>
+      <LI class=dh></LI>
+      <LI class=num>5</LI>
+      <LI class=num>1</LI>
+      <LI class=num>3</LI>
+      <LI class=dh></LI>
+      <LI class=num>3</LI>
+      <LI class=num>1</LI>
+      <LI class=num>5</LI>
+    </UL>
+    <DIV class=clearline></DIV>
+  </DIV>
+</DIV>
+<DIV class=center>
+  <DIV class=musicLeft>
+    <DIV class="conleft sunshine091115">
+      <DIV class=sbg><A name=bl_top></A></DIV>
+      <DIV class=sadd><SPAN class=sself>同城女会员</SPAN><SPAN class=sli>其他地区：
+	  <A onclick=clickmenu(this) href="javascript:void(0)">北京</A>
+<A onclick=clickmenu(this) href="javascript:void(0)">上海</A>
+<A onclick=clickmenu(this) href="javascript:void(0)">广东</A>
+<A onclick=clickmenu(this) href="javascript:void(0)">湖北</A>
+<A onclick=clickmenu(this) href="javascript:void(0)">江苏</A>
+<A onclick=clickmenu(this) href="javascript:void(0)">更多</A></SPAN></DIV>
+      <DIV style="CLEAR: both"></DIV>
+      <DIV class=content2>
+        <DIV class=ctit><B class=l1></B><B class="l2 bb2"></B><B class="l3 bb2"></B><B 
+class="l4 bb2"></B>
+          <DIV class=ctitcon id=gmb_ip>以下是系统根据您的所在地区，为您自动匹配当地的活跃会员， <A 
+onclick=clickmenu(this) href="space.php?do=top" 
+target=_blank>点击查看全部活跃会员</A> </DIV>
+          <B class="l4 bb2"></B><B 
+class="l3 bb2"></B><B class="l2 bb2"></B><B class=l1></B></DIV>
+        <DIV class=gmblist>
+          <TABLE border=0>
+            <TBODY>
+              <TR>
+<!--{template data/blocktpl/3}-->
+                <TD width=140><LI><A class=headerimg onclick=clickmenu(this) 
+      href="javascript:void(0)"><IMG src="index.files/1.jpg"></A> <SPAN 
+      style="COLOR: #e32a76">nicese</SPAN><SPAN><BR>
+                    <script src="http://fw.qq.com/ipaddress" type="text/javascript" charset="gb2312"></script>
+<script type="text/javascript" charset="gb2312">
+// <![CDATA[ 
+document.write(IPData[2]);
+document.write(IPData[3]); 
+// ]]>
+</script>
+                </SPAN></LI></TD>
+                <TD width=140><LI><A class=headerimg onclick=clickmenu(this) 
+      href="javascript:void(0)"><IMG src="index.files/2.jpg"></A> <SPAN 
+      style="COLOR: #e32a76">Fruit</SPAN><SPAN><BR>
+                    <script src="http://fw.qq.com/ipaddress" type="text/javascript" charset="gb2312"></script>
+<script type="text/javascript" charset="gb2312">
+// <![CDATA[ 
+document.write(IPData[2]);
+document.write(IPData[3]); 
+// ]]>
+</script>
+                </SPAN></LI></TD>
+                <TD width=140><LI><A class=headerimg onclick=clickmenu(this) 
+      href="javascript:void(0)"><IMG src="index.files/3.jpg"></A> <SPAN 
+      style="COLOR: #e32a76">smiling</SPAN><SPAN><BR>
+                    <script src="http://fw.qq.com/ipaddress" type="text/javascript" charset="gb2312"></script>
+<script type="text/javascript" charset="gb2312">
+// <![CDATA[ 
+document.write(IPData[2]);
+document.write(IPData[3]); 
+// ]]>
+</script>
+                </SPAN></LI></TD>
+                <TD width=140><LI><A class=headerimg onclick=clickmenu(this) 
+      href="javascript:void(0)"><IMG src="index.files/4.jpg"></A> <SPAN 
+      style="COLOR: #e32a76">sexcosmos</SPAN><SPAN><BR>
+                    <script src="http://fw.qq.com/ipaddress" type="text/javascript" charset="gb2312"></script>
+<script type="text/javascript" charset="gb2312">
+// <![CDATA[ 
+document.write(IPData[2]);
+document.write(IPData[3]); 
+// ]]>
+</script>
+                </SPAN></LI></TD>
+              </TR>
+              <TR>
+                <TD><LI><A class=headerimg onclick=clickmenu(this) 
+      href="javascript:void(0)"><IMG src="index.files/5.jpg"></A> <SPAN 
+      style="COLOR: #e32a76">finding</SPAN><SPAN><BR>
+                    <script src="http://fw.qq.com/ipaddress" type="text/javascript" charset="gb2312"></script>
+<script type="text/javascript" charset="gb2312">
+// <![CDATA[ 
+document.write(IPData[2]);
+document.write(IPData[3]); 
+// ]]>
+</script>
+                </SPAN></LI></TD>
+                <TD><LI><A class=headerimg onclick=clickmenu(this) 
+      href="javascript:void(0)"><IMG src="index.files/6.jpg"></A><SPAN 
+      style="COLOR: #e32a76">chongyh</SPAN><SPAN><BR>
+                    <script src="http://fw.qq.com/ipaddress" type="text/javascript" charset="gb2312"></script>
+<script type="text/javascript" charset="gb2312">
+// <![CDATA[ 
+document.write(IPData[2]);
+document.write(IPData[3]); 
+// ]]>
+</script>
+                </SPAN></LI></TD>
+                <TD><LI><A class=headerimg onclick=clickmenu(this) 
+      href="javascript:void(0)"><IMG src="index.files/7.jpg"></A> <SPAN 
+      style="COLOR: #e32a76">happines</SPAN><SPAN><BR>
+                    <script src="http://fw.qq.com/ipaddress" type="text/javascript" charset="gb2312"></script>
+<script type="text/javascript" charset="gb2312">
+// <![CDATA[ 
+document.write(IPData[2]);
+document.write(IPData[3]); 
+// ]]>
+</script>
+                </SPAN></LI></TD>
+                <TD><LI><A class=headerimg onclick=clickmenu(this) 
+      href="javascript:void(0)"><IMG src="index.files/8.jpg"></A> <SPAN 
+      style="COLOR: #e32a76">yuanxjwei</SPAN><SPAN><BR>
+                    <script src="http://fw.qq.com/ipaddress" type="text/javascript" charset="gb2312"></script>
+<script type="text/javascript" charset="gb2312">
+// <![CDATA[ 
+document.write(IPData[2]);
+document.write(IPData[3]); 
+// ]]>
+</script>
+                </SPAN></LI></TD>
+              </TR>
+              <TR>
+                <TD><LI><A class=headerimg onclick=clickmenu(this) 
+      href="javascript:void(0)"><IMG src="index.files/9.jpg"></A> <SPAN 
+      style="COLOR: #e32a76">chenglihua</SPAN><SPAN><BR>
+                   <script src="http://fw.qq.com/ipaddress" type="text/javascript" charset="gb2312"></script>
+<script type="text/javascript" charset="gb2312">
+// <![CDATA[ 
+document.write(IPData[2]);
+document.write(IPData[3]); 
+// ]]>
+</script>
+                </SPAN></LI></TD>
+                <TD><LI><A class=headerimg onclick=clickmenu(this) 
+      href="javascript:void(0)"><IMG src="index.files/10.jpg"></A> <SPAN 
+      style="COLOR: #e32a76">DemoVer</SPAN><SPAN><BR>
+                   <script src="http://fw.qq.com/ipaddress" type="text/javascript" charset="gb2312"></script>
+<script type="text/javascript" charset="gb2312">
+// <![CDATA[ 
+document.write(IPData[2]);
+document.write(IPData[3]); 
+// ]]>
+</script>
+                </SPAN></LI></TD>
+                <TD><LI><A class=headerimg onclick=clickmenu(this) 
+      href="javascript:void(0)"><IMG src="index.files/11.jpg"></A> <SPAN 
+      style="COLOR: #e32a76">jimi </SPAN><SPAN><BR>
+                    <script src="http://fw.qq.com/ipaddress" type="text/javascript" charset="gb2312"></script>
+<script type="text/javascript" charset="gb2312">
+// <![CDATA[ 
+document.write(IPData[2]);
+document.write(IPData[3]); 
+// ]]>
+</script>
+                </SPAN></LI></TD>
+                <TD><LI><A class=headerimg onclick=clickmenu(this) 
+      href="javascript:void(0)"><IMG src="index.files/12.jpg"></A> <SPAN 
+      style="COLOR: #e32a76">endin</SPAN><SPAN><BR>
+                 <script src="http://fw.qq.com/ipaddress" type="text/javascript" charset="gb2312"></script>
+<script type="text/javascript" charset="gb2312">
+// <![CDATA[ 
+document.write(IPData[2]);
+document.write(IPData[3]); 
+// ]]>
+</script>
+
+  
+                </SPAN></LI></TD>
+              </TR>
+            </TBODY>
+          </TABLE>
+        </DIV>
+        <DIV style="CLEAR: both"></DIV>
+      </DIV>
+      <B class="l3 bb3"></B><B 
+class="l2 bb3"></B><B class=l1></B></DIV>
+  </DIV>
+  <DIV class=musicRight>
+    <DIV class="master091115 mtbd091115"><B class=l1></B><B class=l2></B><B 
+class=l3></B><B class=l4></B>
+      <DIV class=content1 style="HEIGHT: 300px">
+        <H2 class=tit><SPAN><A onclick=clickmenu(this) href="javascript:void(0)">更多&gt;&gt;</A></SPAN>会员故事</H2>
+        <UL class=sy>
+          <LI class=bg><A onclick=clickmenu(this) href="javascript:void(0)">做我的男人，需要这样坚强</A> </LI>
+          <LI class=bg><A onclick=clickmenu(this) href="javascript:void(0)">我不是你的包袱，你可以轻松的行走...</A> </LI>
+          <LI class=bg><A onclick=clickmenu(this) href="javascript:void(0)">女人除了老公还要有个蓝颜知己</A> </LI>
+          <LI class=bg><A onclick=clickmenu(this) href="javascript:void(0)">同城交友找情人</A> </LI>
+          <LI class=bg><A onclick=clickmenu(this) href="javascript:void(0)">痛到麻木，才知道其实一切都是谎...</A> </LI>
+          <LI class=bg><A onclick=clickmenu(this) href="javascript:void(0)">如何正确对待再婚</A> </LI>
+          <LI class=bg><A onclick=clickmenu(this) href="javascript:void(0)">如此心情，怎么找情人</A> </LI>
+          <LI class=bg><A onclick=clickmenu(this) href="javascript:void(0)">向老婆大人提出娶二房的申请书！</A> </LI>
+          <LI class=bg><A onclick=clickmenu(this) href="javascript:void(0)">我讲如何来爱你，我的情人！！！</A> </LI>
+          <LI class=bg><A onclick=clickmenu(this) href="javascript:void(0)">在同城情人的日子，我走出了心理阴影</A> </LI>
+          <LI class=bg><A onclick=clickmenu(this) href="javascript:void(0)">亲爱的，我愿做你的同城情人</A> </LI>
+        </UL>
+      </DIV>
+      <B class="l4 bb3"></B><B class="l3 bb3"></B><B 
+class="l2 bb3"></B><B class=l1></B></DIV>
+    <DIV class="master091115 mtbd091115"><B class=l1></B><B class=l2></B><B 
+class=l3></B><B class=l4></B>
+      <DIV class=content1>
+        <H2 class=tit><SPAN><A onclick=clickmenu(this) href="javascript:void(0)">更多&gt;&gt;</A></SPAN>两性知识</H2>
+        <UL class=sy>
+          <LI class=bg><A onclick=clickmenu(this) href="javascript:void(0)">护眼三招，让眼睛永远20停留在... </A></LI>
+          <LI class=bg><A onclick=clickmenu(this) href="javascript:void(0)">我的第一次 </A></LI>
+          <LI class=bg><A onclick=clickmenu(this) href="javascript:void(0)">如何床上调情</A> </LI>
+          <LI class=bg><A onclick=clickmenu(this) href="javascript:void(0)">关于女性性高潮的谬误</A> </LI>
+          <LI class=bg><A onclick=clickmenu(this) href="javascript:void(0)">女人如何走出婚姻的心理沼泽</A> </LI>
+          <LI class=bg><A onclick=clickmenu(this) href="javascript:void(0)">离婚女人如何调整心理 </A></LI>
+          <LI class=bg><A onclick=clickmenu(this) href="javascript:void(0)">帮你摸透男人的性心理 </A></LI>
+        </UL>
+      </DIV>
+      <B class="l4 bb3"></B><B 
+class="l3 bb3"></B><B class="l2 bb3"></B><B class=l1></B></DIV>
+    <DIV class="master091115 mtbd091115"><B class=l1></B><B class=l2></B><B 
+class=l3></B><B class=l4></B>
+      <DIV class=content1 style="HEIGHT: 180px">
+        <H2 class=tit><SPAN><A onclick=clickmenu(this) href="javascript:void(0)">更多&gt;&gt;</A></SPAN>同城情人互助交流</H2>
+        <UL class=sy>
+          <LI class=bg><A onclick=clickmenu(this) href="javascript:void(0)">我愿做你淡淡的同城情人</A> </LI>
+          <LI class=bg><A onclick=clickmenu(this) href="javascript:void(0)">混迹在同城情人的日子</A> </LI>
+          <LI class=bg><A onclick=clickmenu(this) href="javascript:void(0)">看看就知道，在情人岛找到情人的概率</A> </LI>
+          <LI class=bg><A onclick=clickmenu(this) href="javascript:void(0)">我很寂寞！ 需要很多的男人来安慰！可以直.. </A></LI>
+          <LI class=bg><A onclick=clickmenu(this) href="javascript:void(0)">徐州白领MM找成熟稳重，有修养的男士 </A></LI>
+        </UL>
+      </DIV>
+      <B class="l4 bb3"></B><B class="l3 bb3"></B><B 
+class="l2 bb3"></B><B class=l1></B></DIV>
+  </DIV>
+  <DIV class=clear></DIV>
+  <!--/mainarea-->
+</DIV>
+<!--/main-->
+<DIV></DIV>
+<!--/mainarea-->
+<DIV></DIV></td>
+  </tr>
+</table>
+<!--{template footer}-->

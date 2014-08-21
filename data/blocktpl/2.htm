@@ -1,0 +1,6 @@
+<!--{block/perpage/10/sql/SELECT%20%2A%20FROM%20%60uchome_feed%60%20AS%20%60feed%60%20WHERE%20%60feed%60.%60friend%60%3D%270%27/cachename/block2/cachetime/0}-->
+<ul>
+<!--{loop $_SBLOCK['block2'] $value}-->
+<li><img src="template/default/image/tit.gif" />欢迎  <font color='#FF00FF'>$value[username]</font>   入驻同城爱情公寓同城交友网!<span class="gray"><!--{date('m-d H:i',$value[dateline],1)}--></span></li>
+<!--{/loop}-->
+</ul>

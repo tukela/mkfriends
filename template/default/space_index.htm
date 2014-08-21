@@ -1,0 +1,502 @@
+<!--{eval $_TPL['nosidebar']=1;}-->
+<!--{template header}-->
+ 
+<!--{if $narrowlist || $widelist}-->
+<script type="text/javascript" src="source/script_swfobject.js"></script>
+<!--{/if}-->
+ 
+<script type="text/javascript"> 
+function Ajax() {
+	this.xmlhttp = false;
+	if(window.XMLHttpRequest) { 
+		this.xmlhttp = new XMLHttpRequest();
+		if (this.xmlhttp.overrideMimeType)
+			this.xmlhttp.overrideMimeType("text/xml");
+	}
+	else if (window.ActiveXObject) {
+		try {
+			this.xmlhttp = new ActiveXObject("Msxml2.XMLHTTP.3.0");
+		} catch (e) {
+			try {
+				this.xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+			} catch (e) {}
+		}
+	}
+	this.GetData = function(url, obj) {
+		var self = this;
+		if(!this.xmlhttp) { alert("浏览器不支持XMLHTTP，请更新你的浏览器"); return; }
+		this.xmlhttp.onreadystatechange = function() {
+			if (self.xmlhttp.readyState == 4) {
+			    if(typeof obj == "function")
+			    {
+			        obj(self.xmlhttp.responseText);
+			    }
+			    else if($(obj))
+			    {
+				if (self.xmlhttp.status == 200)
+					$(obj).innerHTML = self.xmlhttp.responseText;
+				else
+					$(obj).innerHTML = "加载失败";
+			    }
+			}
+		}
+		this.xmlhttp.open("GET", url, true);
+		this.xmlhttp.setRequestHeader("If-Modified-Since", "0");
+		this.xmlhttp.send(null);
+	}
+}
+var $=function(tagName){return document.getElementById(tagName);}
+function viewv(uid, type) {
+	(new Ajax()).GetData("/space_seeuid.php?uid="+uid+"&type="+type+"&"+Math.random(), SetNotice);
+}
+function viewvv(uid, type) {
+	(new Ajax()).GetData("/space_seeuid.php?uid="+uid+"&type="+type+"&"+Math.random()+"&c=1", SetNotice);
+}
+function view(uid, type) {
+	(new Ajax()).GetData("/space_seeuid.php?uid="+uid+"&type="+type+"&"+Math.random(), SetNotice);
+}
+function SetNotice(info) {
+	var noticeInfo = eval('(' + info + ')');
+	if(noticeInfo.qq) {
+		$("TipsQQ").innerHTML = noticeInfo.qq;
+		$("TipsQQ").style.display = "";
+	} else if(noticeInfo.email) {
+		$("TipsEmail").innerHTML = noticeInfo.email;
+		$("TipsEmail").style.display = "";
+	} else if(noticeInfo.mobile) {
+		$("TipsMobile").innerHTML = noticeInfo.mobile;
+		$("TipsMobile").style.display = "";
+	}
+}
+</script>
+<style type="text/css">
+<!--
+.STYLE1 {
+	color: #FF0066;
+	font-weight: bold;
+}
+.STYLE11 {
+	color: #FF0099;
+	font-weight: bold;
+}
+-->
+</style>
+
+
+
+<div id="space_page">
+ 
+	<div id="ubar">
+ 
+		<div id="space_avatar">
+			<!--{if $space[magicstar] && $space[magicexpire]>$_SGLOBAL[timestamp]}-->
+			<div class="magicstar">
+			<object codebase="http://download.macromedia.com/pub/shockwave/cabs/flash/swflash.cab#version=9,0,45,0" width="200" height="250">
+				<param name="movie" value="image/magic/star/{$space[magicstar]}.swf" />
+				<param name="quality" value="high" />
+				<param NAME="wmode" value="transparent">
+				<embed src="image/magic/star/{$space[magicstar]}.swf" quality="high" pluginspage="http://www.adobe.com/shockwave/download/download.cgi?P1_Prod_Version=ShockwaveFlash" type="application/x-shockwave-flash"  wmode="transparent" width="200" height="250"></embed>
+			</object>
+			</div>
+			
+			<div class="magicavatar"><!--{else}--><div><!--{/if}--><!--{avatar($space[uid],big,false,$space[sex_org])}--></div>
+		</div>
+ 
+		<!--{if $space[self] && $_SGLOBAL[magic][superstar]}-->
+		<div class="borderbox">
+			<div style="width:100%; overflow:hidden;">
+			<img src="image/magic/superstar.small.gif" class="magicicon" />
+			<a href="pay.php?pay=buyvip" target ="_blank">我要升级VIP</a>			</div>
+		</div><br />
+		<!--{/if}-->
+ 
+		<div class="borderbox">
+			<ul class="spacemenu_list" style="width:100%; overflow:hidden;">
+			<!--{if !$space['isfriend']}-->
+			<li><img src="image/icon/friend.gif"><a href="cp.php?ac=friend&op=add&uid=$space[uid]" id="a_friend_notice" onclick="ajaxmenu(event, this.id, 1)">加为好友</a></li>
+			<!--{/if}-->
+			<!--<li><img src="image/icon/wall.gif"><a href="#comment" onclick="<!--{if checkperm('managespace') or ($_SCONFIG[viplookinfo] == 1 and $vips[day] > 0)}-->return true;<!--{else}-->alert('您还不是VIP会员无法给其他会员留言！点击‘确定’完成VIP升级');window.open('pay.php?pay=buyvip');return false;<!--{/if}-->">给我留言</a></li>-->
+			<li><img src="image/icon/poke.gif"><a href="cp.php?ac=poke&op=send&uid=$space[uid]" id="a_poke" onclick="ajaxmenu(event, this.id, 99999, '', -1)">打个招呼</a>
+			<li><img src="image/icon/pm.gif"><a href="cp.php?ac=pm&uid=$space[uid]" id="a_pm" onclick="<!--{if checkperm('managespace') or ($_SCONFIG[viplookinfo] == 1 and $vips[day] > 0)}-->ajaxmenu(event, this.id, 1)<!--{else}-->alert('您还不是VIP会员无法发送消息！点击‘确定’完成VIP升级');window.open('pay.php?pay=buyvip');return false;<!--{/if}-->" onmouseover="window.status='';">站内聊天</a></li>
+			<li><img src="image/icon/report.gif"><a href="cp.php?ac=common&op=report&idtype=uid&id=$space[uid]" id="a_report" onclick="ajaxmenu(event, this.id, 1)">违规举报</a></li>
+			<!--{if checkperm('managename')||checkperm('managespacegroup')||checkperm('managespaceinfo')||checkperm('managespacecredit')||checkperm('managespacenote')}-->
+			<li><img src="image/icon/profile.gif"><a href="admincp.php?ac=space&op=manage&uid=$space[uid]" id="a_manage">管理用户</a></li>
+		<!--{/if}-->
+			</ul>
+		</div><br />
+		<div class="borderbox">
+			<ul class="spacemenu_list" style="width:100%; overflow:hidden;">
+            <li><img src="template/default/image/titit.gif"><A href="/template/default/faq.html" target="_BLANK">常见问题</A></li>
+            <li><img src="template/default/image/titit.gif"><A href="/template/default/gl.html" target="_BLANK">情人攻略</A></li>
+            <li><img src="template/default/image/titit.gif"><A href="/template/default/mzsm.html" target="_BLANK">免责声明</A></li>
+            <li><img src="template/default/image/titit.gif"><A href="/template/default/gy.html" target="_BLANK">自律公约</A></li>
+ 			</ul>
+		</div>
+       <br />
+		<div class="borderbox1">
+        <a href="/pay.php?pay=buyvip" target="_blank"><img src="/image/vip.jpg" width="195" border="0"></img></a>  		</div>
+       <br />
+		<div class="borderbox">
+			<ul class="spacemenu_list" style="width:100%; overflow:hidden;">
+             友情提醒：<br>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本站男女比例超过10比1，女士基本能找到情人，当然要非常满意也需要运气！<br>
+             &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;守株待兔的男士基本没戏，男士必需主动联系女士才有机会，本站提倡加QQ联系！
+			</ul>
+		</div>
+       <br />
+		<!--{if $guidelist}-->
+		<div id="space_app_guide">
+			<h2>应用菜单</h2>
+			<ul class="line_list">
+			<!--{loop $guidelist $value}-->
+			<li id="space_app_profilelink_$value[appid]">
+				<!--{if $space[self]}-->
+				<a href="cp.php?ac=space&op=delete&appid=$value[appid]&type=profilelink" id="user_app_profile_$value[appid]" class="r_option float_del" style="position: static;" onclick="ajaxmenu(event, this.id)" title="删除">删除</a>
+				<!--{/if}-->
+				<img src="http://appicon.manyou.com/icons/$value[appid]"><!--{eval eval($value[profilelink]);}-->
+			</li>
+			<!--{/loop}-->
+			</ul>
+		</div>
+		<!--{/if}-->
+ 
+		<!--{loop $narrowlist $value}-->
+		<div id="space_app_$value[appid]">
+			<h2>
+				<!--{if $space[self]}-->
+				<a href="cp.php?ac=space&op=delete&appid=$value[appid]" id="user_app_$value[appid]" class="r_option float_del" onclick="ajaxmenu(event, this.id)" title="删除">删除</a>
+				<!--{/if}-->
+				<a href="$value[appurl]">$value[appname]</a>			</h2>
+			<!--{if $value[myml]}-->
+			<div class="box">
+			<!--{eval eval($value[myml]);}-->
+			</div>
+			<!--{/if}-->
+		</div>
+		<!--{/loop}--><!---->
+	</div>
+ 
+	<div id="content">
+			<div style=""></div>
+		<h3 id="spaceindex_name">
+		<!--{if $_SCONFIG[realname]}-->
+			<!--{if $space[name]}--><!--{/if}-->
+		<!--{/if}-->
+				<div class="r_option">
+						<!--{if $_SGLOBAL[session][magichidden]}-->当前隐身<!--{else}-->当前在线<!--{/if}-->
+ 
+						<!--{if $_SGLOBAL[magic][invisible]}-->
+							<!--{if $_SGLOBAL[session][magichidden]}--><!--{/if}-->
+						<!--{/if}-->
+		  </div>
+ 
+					<a href="space.php?uid=$space[uid]"<!--{eval g_color($space[groupid]);}-->>{$_SN[$space[uid]]}</a>
+					<!--{eval g_icon($space[groupid]);}-->
+		<a href="cp.php?ac=credit"></a></h3>
+				<div id="maincontent">
+		<div id="space_info">
+			<ul class="spacemenu_list">
+				<li>已有 $space[viewnum] 人来访<em>(姓名: $space[name])</em></li><li>&nbsp;</li>
+			<!--{if $space[sex]}-->
+				<li><em>性别:</em>$space[sex]</li>
+			<!--{/if}-->
+			<!--{if $space[birth]}-->
+				<li><em>年龄:</em>$space[birth]</li>
+		        <li><em>血型:</em>$space[blood]</li>
+	          <li><em>婚恋:</em>$space[marry]</li>
+			  <!--{/if}-->
+		      <!--{if $space[height]}-->
+				<li><em>身高:</em>$space[height]</li>
+			  <!--{/if}-->
+		      <!--{if $space[field_9]}-->
+				<li><em>学历:</em>$space[field_11]</li>
+			    <!--{/if}-->
+		      <!--{if $space[field_8]}-->
+				<li><em>年收入:</em>$space[field_10]</li>
+			    <!--{/if}-->
+		      <!--{if $space[field_10]}-->
+				<li><em>职业:</em>$space[field_12]</li>
+			    <!--{/if}-->
+		      <!--{if $space[residecity]}-->
+				<li><em>居住:</em>$space[residecity]</li>
+			  <!--{/if}-->
+		      <!--{if $space[birthcity]}-->
+				<li><em>家乡:</em>$space[birthcity]</li>
+			  <!--{/if}-->
+				<!--{if $isonline}-->
+				<li><em>活跃:</em>$isonline (当前在线)</li>
+				<!--{/if}-->
+				<li><em>上次登录:</em>
+			      <!--{if $space[lastlogin]}-->
+				  <!--{date('Y-m-d',$space[lastlogin],1)}-->
+				  <!--{/if}-->
+			  </li>
+			</ul>
+		</div>
+		<br><br>
+		
+		<div class="space_info1">
+			<h3 class="spaceindex_name"><!--{if strip_tags($space[sex])=='女'}-->她<!--{else}-->他<!--{/if}-->的交友宣言</h3>
+			<ul class="spacemenu_list">
+			<li><b><!--{if $space[jymd]==0}--><!--{if empty($space[ask])}--><!--{/if}-->
+			    </b><span class="STYLE11">$space[field_9]</span><b>
+			  <!--{else}-->
+			  待审核
+			  <!--{/if}-->
+		      </b></li>
+			</ul>
+		</div>
+		<br><br>
+ 
+		<div class="space_info1">
+			<h3 class="spaceindex_name"><font color="#999">联系方式</font></h3>
+			<ul class="spacemenu_list">
+			<!--{if checkperm('managespace') or $space[uid] == $_SGLOBAL['supe_uid']}-->
+					<!--{if $space[mobile]}-->
+					<li><em>手机:</em>$space[mobile]</li>
+					<!--{/if}-->
+					<!--{if $space[qq]}-->
+					<li><em>QQ：</em>$space[qq]</li>
+					<!--{/if}-->
+					<!--{if $space[email]}-->
+					<li><em>邮箱：</em>$space[email]</li>
+					<!--{/if}-->
+			<!--{elseif $space[vip] == 1 and $space[sex_org] == 1 and $a_sex == 2}-->
+					<!--{if $space[mobile]}-->
+					<li><em>手机:</em><a href="#" onclick="$('TipsvMobile').style.display='';viewvv($space[uid], 'mobile');">免费查看</a>&nbsp;<span id="TipsvMobile" style='display:none;'>$space[mobile]</span></li>
+					<!--{/if}-->
+					<!--{if $space[qq]}-->
+					<li><em>QQ：</em><a href="#" onclick="$('TipsvQQ').style.display='';viewvv($space[uid], 'qq');">免费查看</a>&nbsp;<span id="TipsvQQ" style='display:none;'>$space[qq]</span></li>
+					<!--{/if}-->
+					<!--{if $space[email]}-->
+					<li><em>邮箱：</em><a href="#" onclick="$('TipsvEmail').style.display='';viewvv($space[uid], 'email');">免费查看</a>&nbsp;<span id="TipsvEmail" style='display:none;'>$space[email]</span></li>
+					<!--{/if}-->
+			<!--{else}-->
+				<!--{if $_SCONFIG[viplookinfo] == 1 and $vips[day] > 0}-->
+					<!--{if $space[mobile]}-->
+					<li><em>手机:</em><a href="#" onclick="$('TipsvMobile').style.display='';viewv($space[uid], 'mobile');">免费查看</a>&nbsp;<span id="TipsvMobile" style='display:none;'>$space[mobile]</span></li>
+					<!--{/if}-->
+					<!--{if $space[qq]}-->
+					<li><em>QQ：</em><a href="#" onclick="$('TipsvQQ').style.display='';viewv($space[uid], 'qq');">免费查看</a>&nbsp;<span id="TipsvQQ" style='display:none;'>$space[qq]</span></li>
+					<!--{/if}-->
+					<!--{if $space[email]}-->
+					<li><em>邮箱：</em><a href="#" onclick="$('TipsvEmail').style.display='';viewv($space[uid], 'email');">免费查看</a>&nbsp;<span id="TipsvEmail" style='display:none;'>$space[email]</span></li>
+					<!--{/if}-->
+				<!--{elseif $_SGLOBAL['supe_uid']}-->
+					<li><em>手机：</em>
+					<!--{if $space[mobile]}-->
+						<!--{if $viewed}-->
+						$space[mobile]
+						<!--{else}-->
+						<b>已填 </b><a href="#" onclick="view($space[uid], 'mobile');">查看</a>&nbsp;<span id="TipsMobile" style='display:none;'></span>
+						<!--{/if}-->
+					<!--{else}-->
+					未填
+					<!--{/if}--> </li>
+					<li><em>Q Q：</em>
+					<!--{if $space[qq]}-->
+						<!--{if $viewed}-->
+						$space[qq]
+						<!--{else}-->
+						<b>已填 </b><a href="#" onclick="view($space[uid], 'qq');">查看</a>&nbsp;<span id="TipsQQ" style='display:none;'></span>
+						<!--{/if}-->
+					<!--{else}-->
+					未填
+					<!--{/if}--></li>
+					<li><em>邮箱：</em>
+					<!--{if $space[email]}-->
+						<!--{if $viewed}-->
+						$space[email]
+						<!--{else}-->
+						<b>已填 </b><a href="#" onclick="view($space[uid], 'email');">查看</a>&nbsp;<span id="TipsEmail" style='display:none;'></span>
+						<!--{/if}-->
+					<!--{else}-->
+					未填
+					<!--{/if}--></li>
+					<li>备注：<font size="2">您的金豆余额<span style="color:#FF0099;font-size:14px;"><strong>$space[credit]</strong></span>个，查看联系方式需支付<span class="STYLE1">2</span>金豆。<span style="color:#FB03A9;"><a href="/pay.php?pay=buyvip" target="_blank">→金豆充值</a></span>&nbsp;&nbsp;<a href="/cp.php?ac=invite" target="_blank"><span style="color:#FB03A9;">→邀请好友赚金豆</span></a><br>
+					  VIP会员可免费查看联系方式，VIP男士联系方式可以被美女免费看！<a href="pay.php?pay=buyvip" target="_blank">→马上升级VIP</a></font>              </li>
+				<!--{else}-->
+					<li>您需要<a href="do.php?ac=login">登录</a>/<a href="do.php?ac=register">注册</a>才可以查看详细资料</li>
+				<!--{/if}-->
+			<!--{/if}-->
+			</ul>
+		</div>
+		<br><br>
+		
+		<!--{if $dolist}-->
+		<div class="space_info1">
+			<h3 class="spaceindex_name"><!--{if strip_tags($space[sex])=='女'}-->她<!--{else}-->他<!--{/if}-->的心情记录</h3>
+			<ul class="spacemenu_list">
+			<!--{loop $dolist $value}-->
+			<li>
+				<div class="detail">
+				$value[message]				</div></li>
+			<!--{/loop}-->
+			</ul>
+		</div>
+		<br><br>
+		<!--{/if}-->
+ 
+		<div class="space_info1">
+			<h3 class="spaceindex_name"><!--{if strip_tags($space[sex])=='女'}-->她<!--{else}-->他<!--{/if}-->的交友密语</h3>
+			<ul class="spacemenu_list">
+			<li><em><!--{if strip_tags($space[sex])=='女'}-->她<!--{else}-->他<!--{/if}-->的交友目的</em><em>：</em><strong>想找一位同城情人</strong></li>
+			<li><em><!--{if strip_tags($space[sex])=='女'}-->她<!--{else}-->他<!--{/if}-->愿意为对方提供：</em><strong>$space[field_1]</strong></li>
+			<li><em><!--{if strip_tags($space[sex])=='女'}-->她<!--{else}-->他<!--{/if}-->希望获得帮助：</em><strong>$space[field_2]</strong></li>
+			<li><em><!--{if strip_tags($space[sex])=='女'}-->她<!--{else}-->他<!--{/if}-->的外貌：</em><strong>$space[field_3]</strong></li>
+			<li><em><!--{if strip_tags($space[sex])=='女'}-->她<!--{else}-->他<!--{/if}-->的个性：</em><strong>$space[field_4]</strong></li>
+			<li><em><!--{if strip_tags($space[sex])=='女'}-->她<!--{else}-->他<!--{/if}-->的爱好：</em><strong>$space[field_8]</strong></li>
+			<li><em><!--{if strip_tags($space[sex])=='女'}-->她<!--{else}-->他<!--{/if}-->的性爱观念：</em><strong>$space[field_6]</strong></li>
+			<li><em><!--{if strip_tags($space[sex])=='女'}-->她<!--{else}-->他<!--{/if}-->第一次见面希望：</em><strong>$space[field_7]</strong></li>
+			</ul>
+		</div>
+		<br><br>
+ 
+		<!--{if $albumlist}-->
+		<div id="space_photo">
+			<h3 class="feed_header">
+				<a href="space.php?uid=$space[uid]&do=album&view=me" class="r_option">全部</a>
+				相册			</h3>
+			<table cellspacing="4" cellpadding="4" width="100%">
+			<tr>
+				<!--{loop $albumlist $key $value}-->
+				<td width="85" align="center"><a href="space.php?uid=$space[uid]&do=album&id=$value[albumid]" target="_blank"><img src="$value[pic]" alt="$value[albumname]" width="70" /></a></td>
+				<td width="165">
+					<h6><a href="space.php?uid=$space[uid]&do=album&id=$value[albumid]" target="_blank" title="$value[albumname]">$value[albumname]</a></h6>
+					<p class="gray">$value[picnum] 张照片</p>
+					<p class="gray">更新于 <!--{date('m-d',$value[dateline],1)}--></p>				</td>
+				<!--{if $key%2==1}--></tr><tr><!--{/if}-->
+				<!--{/loop}-->
+			</tr>
+			</table>
+		</div>
+		<!--{/if}-->
+ 
+		<!--{if $bloglist}-->
+		<div id="space_blog" class="feed">
+			<h3 class="feed_header">
+				<a href="space.php?uid=$space[uid]&do=blog&view=me" class="r_option">全部</a>
+				日志			</h3>
+			<ul class="line_list">
+			<!--{loop $bloglist $value}-->
+				<li>
+					
+					<h4>
+						<span class="gray r_option"><!--{date('m-d H:i',$value[dateline],1)}--></span>
+						<a href="space.php?uid=$space[uid]&do=blog&id=$value[blogid]" target="_blank">$value[subject]</a>					</h4>
+					<div class="detail">
+						$value[message]					</div>
+				</li>
+			<!--{/loop}-->
+			</ul>
+		</div>
+		<!--{/if}-->
+ 
+ 
+		<!--{loop $widelist $value}-->
+		<!--{if $value[myml]}-->
+		<div id="space_app_$value[appid]" class="appbox">
+			<h3 class="feed_header">
+				<!--{if $space[self]}-->
+				<a href="cp.php?ac=space&op=delete&appid=$value[appid]" id="user_app_$value[appid]" class="r_option float_del" onclick="ajaxmenu(event, this.id)" title="删除">删除</a>
+				<!--{/if}-->
+				<a href="$value[appurl]">$value[appname]</a>			</h3>
+			<div class="box" style="margin: 0 0 20px;">
+			<!--{eval eval($value[myml]);}-->
+			</div>
+		</div>
+		<!--{/if}-->
+		<!--{/loop}-->
+	  </div>
+ 
+		<!--{if ($_SCONFIG[viplookinfo] == 1 and $vips[day] > 0) or checkperm('managespace') or $space[uid] == $_SGLOBAL['supe_uid']}-->
+		<!--<div id="comment" class="comments_list">
+			<h3 class="feed_header">
+				<a href="space.php?uid=$space[uid]&do=wall&view=me" class="r_option">全部</a>
+				留言板
+			</h3>
+ 
+			<div class="box">
+				<form action="cp.php?ac=comment" id="quick_commentform_{$space[uid]}" name="quick_commentform_{$space[uid]}" method="post" style="padding:0 0 0 5px;">
+					<a href="###" id="editface" onclick="showFace(this.id, 'comment_message');return false;"><img src="image/facelist.gif" align="absmiddle" /></a>
+					<!--{if $_SGLOBAL['magic']['doodle']}-->
+					<a id="a_magic_doodle" href="magic.php?mid=doodle&showid=comment_doodle&target=comment_message" onclick="ajaxmenu(event, this.id, 1)"><img src="image/magic/doodle.small.gif" class="magicicon" />涂鸦板</a>
+					<!--{/if}-->
+					<br />
+					<textarea name="message" id="comment_message" rows="4" cols="60" style="width:98%;" onkeydown="ctrlEnter(event, 'commentsubmit_btn');"></textarea><br>
+					<input type="hidden" name="refer" value="space.php?uid=$space[uid]" />
+					<input type="hidden" name="id" value="$space[uid]" />
+					<input type="hidden" name="idtype" value="uid" />
+					<input type="hidden" name="commentsubmit" value="true" />
+					<input type="button" id="commentsubmit_btn" name="commentsubmit_btn" class="submit" value="留言" onclick="ajaxpost('quick_commentform_{$space[uid]}', 'wall_add')" />
+					<span id="__quick_commentform_{$space[uid]}"></span>
+					<input type="hidden" name="formhash" value="<!--{eval echo formhash();}-->" />
+				</form>
+	  </div>
+ 
+			<div class="box_content">
+				<ul class="post_list a_list justify_list" id="comment_ul">
+				<!--{loop $walllist $value}-->
+					<!--{template space_comment_li}-->
+				<!--{/loop}-->
+				</ul>
+				<!--{if $walllist}-->
+				<p class="r_option" style="padding:5px 0 10px 0;"><a href="space.php?uid=$space[uid]&do=wall&view=me">&raquo; 更多留言</a></p>
+				<!--{/if}-->
+			</div>
+  </div>-->
+		<!--{/if}-->
+</div>
+ 
+	<div id="obar">
+		
+<!--{if $space[self]}-->
+<!--{if $visitorlist}-->
+<!-- 		<div class="sidebox">
+			<h2 class="title">
+				<a href="space.php?uid=$space[uid]&do=friend&view=visitor" class="r_option">全部</a>
+				最近来访
+				<!--{if !$space[self] && $_SGLOBAL[magic][anonymous]}-->
+				<span class="gray"><img title="$_SGLOBAL[magic][anonymous]" src="image/magic/anonymous.small.gif"/><a id="a_magic_anonymous" href="magic.php?mid=anonymous&idtype=uid&id=$space[uid]" onclick="ajaxmenu(event,this.id,1)">匿名</a></span>
+				<!--{/if}-->
+			</h2>
+			<ul class="avatar_list">
+				<!--{loop $visitorlist $key $value}-->
+				<li>
+					<!--{if $value[vusername] == ''}-->
+					<div class="avatar48"><img src="image/magic/hidden.gif" alt="匿名" /></div>
+					<p>匿名</p>
+					<p class="gray"><!--{date('n月j日',$value[dateline],1)}--></p>
+					<!--{else}-->
+					<div class="avatar48"><a href="space.php?uid=$value[vuid]"><!--{avatar($value[vuid],small,false,$value[sex])}--></a></div>
+					<p<!--{if $ols[$value[vuid]]}--> class="online_icon_p"<!--{/if}-->><a href="space.php?uid=$value[vuid]" title="{$_SN[$value[vuid]]}">{$_SN[$value[vuid]]}</a></p>
+					<p class="gray"><!--{date('n月j日',$value[dateline],1)}--></p>
+					<!--{/if}-->
+				</li>
+				<!--{/loop}-->
+			</ul>
+</div> -->
+		<!--{/if}-->
+<!--{/if}-->
+ 
+	</div>
+ 
+</div>
+ 
+<!--{if $_GET['theme']}--><div class="nn">您是否想使用这款个性风格?<br /><a href="cp.php?ac=theme&op=use&dir=<!--{$_GET['theme']}-->">[应用]</a><a href="cp.php?ac=theme">[取消]</a></div><!--{/if}-->
+<!--{template footer}-->
+ 
+<script> 
+function getindex(type) {
+	var plus = '';
+	if(type == 'event') plus = '&type=self';
+	ajaxget('space.php?uid=$space[uid]&do='+type+'&view=me'+plus+'&ajaxdiv=maincontent', 'maincontent');
+}
+ 
+//彩虹炫
+var elems = selector('div[class~=magicflicker]'); 
+for(var i=0; i<elems.length; i++){
+	magicColor(elems[i]);
+}
+ 
+</script>

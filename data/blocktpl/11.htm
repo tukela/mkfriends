@@ -1,0 +1,6 @@
+<!--{block/sql/SELECT%20%2A%20FROM%20%60uchome_blog%60%20AS%20%60blog%60%20WHERE%20%60blog%60.%60friend%60%3D%270%27%20LIMIT%200%2C1/cachename/block1/cachetime/0}-->
+<ul>
+<!--{loop $_SBLOCK['block1'] $value}-->
+<li><img src="template/default/image/tit.gif" /><a href="http://www.zibo3.com/space.php?uid={$value[uid]}&do=blog&id={$value[blogid]}" target="_blank">$value['subject']</a>&nbsp;&nbsp;<span class="gray"><!--{date('m-d H:i',$value[dateline],1)}--></span></li>
+<!--{/loop}-->
+</ul>
